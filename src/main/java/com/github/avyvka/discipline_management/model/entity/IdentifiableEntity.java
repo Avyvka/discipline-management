@@ -2,8 +2,8 @@ package com.github.avyvka.discipline_management.model.entity;
 
 import com.github.avyvka.discipline_management.support.CompactId;
 import jakarta.persistence.Column;
+import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
-import org.springframework.data.annotation.Id;
 
 @MappedSuperclass
 public abstract class IdentifiableEntity {
