@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 @Entity
 public class Student extends Person {
 
-    @Column(nullable = false)
+    @Column(name = "study_group", nullable = false)
     private String group;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
