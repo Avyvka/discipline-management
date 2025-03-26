@@ -1,5 +1,6 @@
 package com.github.avyvka.discipline_management.controller;
 
+import com.github.avyvka.discipline_management.controller.support.AbstractCrudController;
 import com.github.avyvka.discipline_management.model.dto.IdentifiableEntityDto;
 import com.github.avyvka.discipline_management.service.support.AbstractCrudService;
 import org.junit.jupiter.api.BeforeEach;

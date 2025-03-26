@@ -1,4 +1,4 @@
-package com.github.avyvka.discipline_management.controller;
+package com.github.avyvka.discipline_management.controller.support;
 
 import com.github.avyvka.discipline_management.model.dto.IdentifiableEntityDto;
 import com.github.avyvka.discipline_management.service.support.CrudService;
