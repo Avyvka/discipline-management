@@ -5,5 +5,5 @@ public record DisciplineDto(
         String name,
         String description,
         LecturerDto lecturer
-) {
+) implements IdentifiableEntityDto<String> {
 }

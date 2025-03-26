@@ -12,5 +12,5 @@ public record LecturerDto(
         int age,
         String academicTitle,
         Set<Discipline> disciplines
-) {
+) implements IdentifiableEntityDto<String> {
 }

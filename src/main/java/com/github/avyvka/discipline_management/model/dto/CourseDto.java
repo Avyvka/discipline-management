@@ -6,5 +6,5 @@ public record CourseDto(
         String id,
         int number,
         Set<DisciplineDto> disciplines
-) {
+) implements IdentifiableEntityDto<String> {
 }
