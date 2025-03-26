@@ -37,7 +37,7 @@ public abstract class AbstractCrudService<E, D, ID> implements CrudService<D, ID
 
     @Override
     public D update(ID id, D dto) {
-        E entity = repository.findById(id)
+        var entity = repository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Entity with ID " + id + " not found"));
 
         return mapper.toDto(repository.save(mapper.update(entity, dto)));
@@ -45,7 +45,7 @@ public abstract class AbstractCrudService<E, D, ID> implements CrudService<D, ID
 
     @Override
     public D partialUpdate(ID id, D dto) {
-        E entity = repository.findById(id)
+        var entity = repository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Entity with ID " + id + " not found"));
 
         return mapper.toDto(repository.save(mapper.partialUpdate(entity, dto)));

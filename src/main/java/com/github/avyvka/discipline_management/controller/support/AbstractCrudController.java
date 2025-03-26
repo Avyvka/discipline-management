@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
-
 public abstract class AbstractCrudController<D extends IdentifiableEntityDto<ID>, ID> implements CrudController<D, ID> {
 
     private final CrudService<D, ID> service;
@@ -22,9 +20,9 @@ public abstract class AbstractCrudController<D extends IdentifiableEntityDto<ID>
 
     @Override
     public ResponseEntity<D> create(@Validated @RequestBody D dto) {
-        D created = service.create(dto);
+        var created = service.create(dto);
 
-        URI location = ServletUriComponentsBuilder
+        var location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(created.id())
