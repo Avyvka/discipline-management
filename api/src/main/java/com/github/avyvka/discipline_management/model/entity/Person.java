@@ -1,6 +1,9 @@
 package com.github.avyvka.discipline_management.model.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.Table;
 
 @Entity
 @Inheritance

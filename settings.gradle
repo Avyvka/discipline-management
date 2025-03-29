@@ -1,1 +1,4 @@
 rootProject.name = 'discipline-management'
+
+include 'api'
+include 'frontend'
