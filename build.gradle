@@ -1,10 +1,10 @@
 subprojects {
 
-    group = 'com.github.avyvka'
-    version = project.hasProperty('version') ? project.property('version') : '0.0.1-SNAPSHOT'
+    group = "com.github.avyvka"
+    version = project.hasProperty("version") ? project.property("version") : "0.0.1-SNAPSHOT"
 
     if (name != "frontend") {
-        apply plugin: "java"
+        apply "plugin": "java"
 
         java {
             sourceCompatibility = JavaVersion.VERSION_21
@@ -16,4 +16,13 @@ subprojects {
         mavenCentral()
     }
 
+}
+
+tasks.register("embedFrontend", Sync) {
+    from project(":frontend").layout.buildDirectory.dir("dist")
+    into project(":api").layout.projectDirectory.dir("src/main/resources/static")
+}
+
+project(":api").tasks.named("processResources") {
+    dependsOn ":embedFrontend"
 }
