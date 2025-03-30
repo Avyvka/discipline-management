@@ -1,52 +1,53 @@
-import { GitHubBanner, Refine, WelcomePage } from "@refinedev/core";
-import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
-import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
-
-import { useNotificationProvider } from "@refinedev/antd";
-import "@refinedev/antd/dist/reset.css";
-
-import routerBindings, {
-  DocumentTitleHandler,
-  UnsavedChangesNotifier,
-} from "@refinedev/react-router";
-import dataProvider from "@refinedev/simple-rest";
-import { App as AntdApp } from "antd";
-import { BrowserRouter, Route, Routes } from "react-router";
+import { Refine } from "@refinedev/core";
 import { ColorModeContextProvider } from "./contexts/color-mode";
+import routerProvider from "@refinedev/react-router";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router";
+import springDataProvider from "./shared/data/provider/spring";
+
+import "@refinedev/antd/dist/reset.css";
+import { ThemedLayoutV2 } from "@refinedev/antd";
+import { CourseCreate, CourseEdit, CourseList, CourseShow } from "./pages/courses";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <GitHubBanner />
-      <RefineKbarProvider>
-        <ColorModeContextProvider>
-          <AntdApp>
-            <DevtoolsProvider>
-              <Refine
-                dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
-                notificationProvider={useNotificationProvider}
-                routerProvider={routerBindings}
-                options={{
-                  syncWithLocation: true,
-                  warnWhenUnsavedChanges: true,
-                  useNewQueryKeys: true,
-                  projectId: "h6Mnx6-vi0lN5-ICEh2E",
-                }}
-              >
-                <Routes>
-                  <Route index element={<WelcomePage />} />
-                </Routes>
-                <RefineKbar />
-                <UnsavedChangesNotifier />
-                <DocumentTitleHandler />
-              </Refine>
-              <DevtoolsPanel />
-            </DevtoolsProvider>
-          </AntdApp>
-        </ColorModeContextProvider>
-      </RefineKbarProvider>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <ColorModeContextProvider>
+                <Refine
+                    dataProvider={springDataProvider("http://localhost:8080/api/v1")}
+                    routerProvider={routerProvider}
+                    resources={[
+                        {
+                            name: "courses",
+                            list: "/ui/courses",
+                            create: "/ui/courses/create",
+                            edit: "/ui/courses/edit/:id",
+                            show: "/ui/courses/show/:id",
+                            meta: {
+                                canDelete: true,
+                            },
+                        },
+                    ]}
+                >
+                    <Routes>
+                        <Route
+                            element={
+                                <ThemedLayoutV2>
+                                    <Outlet />
+                                </ThemedLayoutV2>
+                            }
+                        >
+                            <Route path="/ui/courses">
+                                <Route index element={<CourseList />} />
+                                <Route path="show/:id" element={<CourseShow />} />
+                                <Route path="create" element={<CourseCreate />} />
+                                <Route path="edit/:id" element={<CourseEdit />} />
+                            </Route>
+                        </Route>
+                    </Routes>
+                </Refine>
+            </ColorModeContextProvider>
+        </BrowserRouter>
+    );
 }
 
 export default App;
