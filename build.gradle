@@ -19,6 +19,7 @@ subprojects {
 }
 
 tasks.register("embedFrontend", Sync) {
+    dependsOn project(":frontend").tasks.named("build")
     from project(":frontend").layout.buildDirectory.dir("dist")
     into project(":api").layout.projectDirectory.dir("src/main/resources/static")
 }
