@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
-public class DefaultLecturerService extends AbstractCrudService<Lecturer, LecturerDto, String>
+public class DefaultLecturerService extends AbstractCrudService<Lecturer, LecturerDto, UUID>
         implements LecturerService {
     @Autowired
     public DefaultLecturerService(
-            JpaRepository<Lecturer, String> repository,
+            JpaRepository<Lecturer, UUID> repository,
             EntityDtoMapper<Lecturer, LecturerDto> mapper
     ) {
         super(repository, mapper);

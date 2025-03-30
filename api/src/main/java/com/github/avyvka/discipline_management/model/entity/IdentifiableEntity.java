@@ -1,22 +1,23 @@
 package com.github.avyvka.discipline_management.model.entity;
 
-import com.github.avyvka.discipline_management.support.CompactId;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+
+import java.util.UUID;
 
 @MappedSuperclass
 public abstract class IdentifiableEntity {
 
     @Id
-    @Column(updatable = false, nullable = false, length = 32)
-    private String id;
+    @Column(updatable = false, nullable = false)
+    private UUID id;
 
     public IdentifiableEntity() {
-        this.id = CompactId.randomId(this.getClass()).toString();
+        this.id = UUID.randomUUID();
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 }

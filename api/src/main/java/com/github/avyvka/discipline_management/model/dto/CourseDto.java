@@ -1,10 +1,11 @@
 package com.github.avyvka.discipline_management.model.dto;
 
 import java.util.Set;
+import java.util.UUID;
 
 public record CourseDto(
-        String id,
+        UUID id,
         int number,
         Set<DisciplineDto> disciplines
-) implements IdentifiableEntityDto<String> {
+) implements IdentifiableEntityDto<UUID> {
 }

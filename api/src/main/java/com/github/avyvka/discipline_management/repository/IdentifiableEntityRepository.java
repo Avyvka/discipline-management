@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
 @NoRepositoryBean
-public interface IdentifiableEntityRepository<T extends IdentifiableEntity> extends JpaRepository<T, String> {
+public interface IdentifiableEntityRepository<T extends IdentifiableEntity> extends JpaRepository<T, java.util.UUID> {
 }

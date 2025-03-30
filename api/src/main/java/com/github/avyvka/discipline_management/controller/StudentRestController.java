@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/v1/students")
-public class StudentRestController extends AbstractCrudController<StudentDto, String> {
+public class StudentRestController extends AbstractCrudController<StudentDto, UUID> {
 
     @Autowired
-    public StudentRestController(CrudService<StudentDto, String> service) {
+    public StudentRestController(CrudService<StudentDto, UUID> service) {
         super(service);
     }
 }

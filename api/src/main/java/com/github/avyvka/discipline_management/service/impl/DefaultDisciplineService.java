@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
-public class DefaultDisciplineService extends AbstractCrudService<Discipline, DisciplineDto, String>
+public class DefaultDisciplineService extends AbstractCrudService<Discipline, DisciplineDto, UUID>
         implements DisciplineService {
     @Autowired
     public DefaultDisciplineService(
-            JpaRepository<Discipline, String> repository,
+            JpaRepository<Discipline, UUID> repository,
             EntityDtoMapper<Discipline, DisciplineDto> mapper
     ) {
         super(repository, mapper);
