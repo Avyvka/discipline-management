@@ -9,7 +9,7 @@ import java.util.Set;
 @Entity
 public class Lecturer extends Person {
 
-    @Column(nullable = false)
+    @Column
     private String academicTitle;
 
     @OneToMany(mappedBy = "lecturer")

@@ -5,11 +5,11 @@ import jakarta.persistence.*;
 @Entity
 public class Student extends Person {
 
-    @Column(name = "study_group", nullable = false)
+    @Column(name = "study_group")
     private String group;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id", nullable = false)
+    @JoinColumn(name = "course_id")
     private Course course;
 
     public String getGroup() {
