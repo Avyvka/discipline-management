@@ -7,7 +7,7 @@ public record StudentDto(
         String firstName,
         String lastName,
         String middleName,
-        int age,
+        Integer age,
         String group,
         CourseDto course
 ) implements IdentifiableEntityDto<UUID> {

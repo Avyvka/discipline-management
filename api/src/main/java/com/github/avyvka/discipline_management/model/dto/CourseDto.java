@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public record CourseDto(
         UUID id,
-        int number,
+        Integer number,
         Set<DisciplineDto> disciplines
 ) implements IdentifiableEntityDto<UUID> {
 }

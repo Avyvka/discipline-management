@@ -10,7 +10,7 @@ public record LecturerDto(
         String firstName,
         String lastName,
         String middleName,
-        int age,
+        Integer age,
         String academicTitle,
         Set<Discipline> disciplines
 ) implements IdentifiableEntityDto<UUID> {
