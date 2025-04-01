@@ -20,4 +20,8 @@ public abstract class IdentifiableEntity {
     public UUID getId() {
         return id;
     }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
 }
