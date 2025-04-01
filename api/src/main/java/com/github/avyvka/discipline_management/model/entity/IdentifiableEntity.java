@@ -1,6 +1,7 @@
 package com.github.avyvka.discipline_management.model.entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
@@ -10,12 +11,9 @@ import java.util.UUID;
 public abstract class IdentifiableEntity {
 
     @Id
+    @GeneratedValue
     @Column(updatable = false, nullable = false)
     private UUID id;
-
-    public IdentifiableEntity() {
-        this.id = UUID.randomUUID();
-    }
 
     public UUID getId() {
         return id;
