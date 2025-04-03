@@ -27,7 +27,7 @@ export const LecturerShow = () => {
             <TextField value={record?.academicTitle} />
             <Title level={5}>Disciplines</Title>
             <List
-                dataSource={record?.disciplines}
+                dataSource={record?.disciplines?.sort((a, b) => a.name.localeCompare(b.name))}
                 renderItem={(item) => (
                     <List.Item>
                         <TextField value={item.name} />

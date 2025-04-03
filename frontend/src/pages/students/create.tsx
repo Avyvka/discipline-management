@@ -3,7 +3,7 @@ import { Form, Input, Select } from "antd";
 import { Student } from "../../shared/api/types";
 
 export const StudentCreate = () => {
-    const { formProps, saveButtonProps, query } = useForm<Student>();
+    const { formProps, saveButtonProps } = useForm<Student>();
 
     const { selectProps: courseSelectProps } = useSelect({
         resource: "courses",

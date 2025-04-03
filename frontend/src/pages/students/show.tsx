@@ -1,22 +1,15 @@
 import { useShow, useOne } from "@refinedev/core";
 import { Show, TextField, NumberField } from "@refinedev/antd";
 import { Typography } from "antd";
+import { Student } from "../../shared/api/types";
 
 const { Title } = Typography;
 
 export const StudentShow = () => {
-    const { query } = useShow();
+    const { query } = useShow<Student>();
     const { data, isLoading } = query;
 
     const record = data?.data;
-
-    const { data: courseData, isLoading: courseIsLoading } = useOne({
-        resource: "courses",
-        id: record?.course?.id || "",
-        queryOptions: {
-            enabled: !!record,
-        },
-    });
 
     return (
         <Show isLoading={isLoading}>
@@ -33,7 +26,7 @@ export const StudentShow = () => {
             <Title level={5}>Group</Title>
             <NumberField value={record?.group ?? ""} />
             <Title level={5}>Course</Title>
-            {courseIsLoading ? <>Loading...</> : <>{courseData?.data?.number}</>}
+            <NumberField value={record?.course?.number ?? ""} />
         </Show>
     );
 };

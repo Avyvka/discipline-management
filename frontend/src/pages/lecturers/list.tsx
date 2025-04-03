@@ -1,11 +1,5 @@
 import { BaseRecord } from "@refinedev/core";
-import {
-    useTable,
-    List,
-    EditButton,
-    ShowButton,
-    DeleteButton,
-} from "@refinedev/antd";
+import { useTable, List, EditButton, ShowButton, DeleteButton } from "@refinedev/antd";
 import { Table, Space } from "antd";
 import { Lecturer } from "../../shared/api/types";
 
@@ -22,30 +16,15 @@ export const LecturerList = () => {
                 <Table.Column dataIndex="lastName" title="Last Name" />
                 <Table.Column dataIndex="middleName" title="Middle Name" />
                 <Table.Column dataIndex="age" title="Age" />
-                <Table.Column
-                    dataIndex="academicTitle"
-                    title="Academic Title"
-                />
+                <Table.Column dataIndex="academicTitle" title="Academic Title" />
                 <Table.Column
                     title="Actions"
                     dataIndex="actions"
                     render={(_, record: BaseRecord) => (
                         <Space>
-                            <EditButton
-                                hideText
-                                size="small"
-                                recordItemId={record.id}
-                            />
-                            <ShowButton
-                                hideText
-                                size="small"
-                                recordItemId={record.id}
-                            />
-                            <DeleteButton
-                                hideText
-                                size="small"
-                                recordItemId={record.id}
-                            />
+                            <EditButton hideText size="small" recordItemId={record.id} />
+                            <ShowButton hideText size="small" recordItemId={record.id} />
+                            <DeleteButton hideText size="small" recordItemId={record.id} />
                         </Space>
                     )}
                 />
