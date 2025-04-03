@@ -32,7 +32,7 @@ public abstract class AbstractCrudService<E, D, ID> implements CrudService<D, ID
 
     @Override
     public Page<D> findAll(Pageable pageable) {
-        return repository.findAll(pageable).map(mapper::toDto);
+        return repository.findAll(pageable).map(mapper::toDtoLazy);
     }
 
     @Override

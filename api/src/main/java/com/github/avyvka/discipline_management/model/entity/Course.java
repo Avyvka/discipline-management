@@ -1,6 +1,9 @@
 package com.github.avyvka.discipline_management.model.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 import java.util.Set;
 
@@ -11,12 +14,7 @@ public class Course extends IdentifiableEntity {
     @Column(nullable = false)
     private int number;
 
-    @ManyToMany
-    @JoinTable(
-            name = "course_discipline",
-            joinColumns = @JoinColumn(name = "course_id", nullable = false, unique = true),
-            inverseJoinColumns = @JoinColumn(name = "discipline_id", nullable = false, unique = true)
-    )
+    @OneToMany(mappedBy = "course")
     private Set<Discipline> disciplines;
 
     public int getNumber() {

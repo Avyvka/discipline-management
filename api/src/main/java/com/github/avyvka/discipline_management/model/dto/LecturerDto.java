@@ -1,10 +1,11 @@
 package com.github.avyvka.discipline_management.model.dto;
 
-import com.github.avyvka.discipline_management.model.entity.Discipline;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.util.Set;
 import java.util.UUID;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public record LecturerDto(
         UUID id,
         String firstName,
@@ -12,6 +13,6 @@ public record LecturerDto(
         String middleName,
         Integer age,
         String academicTitle,
-        Set<Discipline> disciplines
+        Set<DisciplineDto> disciplines
 ) implements IdentifiableEntityDto<UUID> {
 }

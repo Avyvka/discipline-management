@@ -12,9 +12,13 @@ public class Discipline extends IdentifiableEntity {
     @Column(nullable = false)
     private String description;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "lecturer_id", nullable = false)
     private Lecturer lecturer;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id", nullable = false)
+    private Course course;
 
     public String getName() {
         return name;
@@ -38,5 +42,13 @@ public class Discipline extends IdentifiableEntity {
 
     public void setLecturer(Lecturer lecturer) {
         this.lecturer = lecturer;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }

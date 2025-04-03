@@ -8,7 +8,7 @@ public class Student extends Person {
     @Column(name = "study_group")
     private String group;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id")
     private Course course;
 
