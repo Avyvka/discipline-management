@@ -1,6 +1,7 @@
 package com.github.avyvka.discipline_management.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.github.avyvka.discipline_management.model.IdentifiableRecord;
 
 import java.util.UUID;
 
@@ -11,5 +12,5 @@ public record DisciplineDto(
         String description,
         LecturerDto lecturer,
         CourseDto course
-) implements IdentifiableEntityDto<UUID> {
+) implements IdentifiableRecord<UUID> {
 }

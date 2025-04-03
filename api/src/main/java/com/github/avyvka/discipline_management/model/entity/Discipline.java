@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "discipline")
-public class Discipline extends IdentifiableEntity {
+public class Discipline extends UUIDIdentifiableEntity {
 
     @Column(nullable = false)
     private String name;

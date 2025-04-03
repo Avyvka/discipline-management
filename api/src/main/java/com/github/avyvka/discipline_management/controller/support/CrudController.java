@@ -1,13 +1,13 @@
 package com.github.avyvka.discipline_management.controller.support;
 
-import com.github.avyvka.discipline_management.model.dto.IdentifiableEntityDto;
+import com.github.avyvka.discipline_management.model.Identifiable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-public interface CrudController<D extends IdentifiableEntityDto<ID>, ID> {
+public interface CrudController<D extends Identifiable<ID>, ID> {
 
     @PostMapping
     ResponseEntity<D> create(@Validated @RequestBody D dto);

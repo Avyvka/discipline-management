@@ -1,6 +1,6 @@
 package com.github.avyvka.discipline_management.controller.support;
 
-import com.github.avyvka.discipline_management.model.dto.IdentifiableEntityDto;
+import com.github.avyvka.discipline_management.model.Identifiable;
 import com.github.avyvka.discipline_management.service.support.CrudService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-public abstract class AbstractCrudController<D extends IdentifiableEntityDto<ID>, ID> implements CrudController<D, ID> {
+public abstract class AbstractCrudController<D extends Identifiable<ID>, ID> implements CrudController<D, ID> {
 
     private final CrudService<D, ID> service;
 
@@ -25,7 +25,7 @@ public abstract class AbstractCrudController<D extends IdentifiableEntityDto<ID>
         var location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(created.id())
+                .buildAndExpand(created.getId())
                 .toUri();
 
         return ResponseEntity.created(location).body(created);

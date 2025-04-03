@@ -1,6 +1,7 @@
 package com.github.avyvka.discipline_management.service.support;
 
 import com.github.avyvka.discipline_management.mapper.EntityDtoMapper;
+import com.github.avyvka.discipline_management.model.Identifiable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,7 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
-public abstract class AbstractCrudService<E, D, ID> implements CrudService<D, ID> {
+public abstract class AbstractCrudService<E extends Identifiable<ID>, D, ID> implements CrudService<D, ID> {
 
     private final JpaRepository<E, ID> repository;
 
@@ -22,7 +23,8 @@ public abstract class AbstractCrudService<E, D, ID> implements CrudService<D, ID
 
     @Override
     public D create(D dto) {
-        return mapper.toDto(repository.save(mapper.toEntity(dto)));
+        var saved = repository.save(mapper.toEntity(dto));
+        return findById(saved.getId()).orElseThrow();
     }
 
     @Override

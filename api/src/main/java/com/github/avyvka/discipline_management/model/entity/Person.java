@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 @Entity
 @Inheritance
 @Table(name = "person")
-public abstract class Person extends IdentifiableEntity {
+public abstract class Person extends UUIDIdentifiableEntity {
 
     @Column(nullable = false)
     private String firstName;

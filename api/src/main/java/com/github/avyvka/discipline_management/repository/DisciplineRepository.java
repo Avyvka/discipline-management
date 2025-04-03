@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface DisciplineRepository extends IdentifiableEntityRepository<Discipline> {
+public interface DisciplineRepository extends UUIDIdentifiableEntityRepository<Discipline> {
 
     @NonNull
     @Override
