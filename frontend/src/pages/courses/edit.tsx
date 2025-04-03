@@ -1,8 +1,9 @@
 import { Edit, useForm } from "@refinedev/antd";
 import { Form, Input } from "antd";
+import { Course } from "../../shared/api/types";
 
 export const CourseEdit = () => {
-    const { formProps, saveButtonProps } = useForm();
+    const { formProps, saveButtonProps } = useForm<Course>();
     return (
         <Edit saveButtonProps={saveButtonProps}>
             <Form {...formProps} layout="vertical">
