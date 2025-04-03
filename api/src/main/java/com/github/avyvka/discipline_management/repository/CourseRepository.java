@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface CourseRepository extends IdentifiableEntityRepository<Course> {
+public interface CourseRepository extends UUIDIdentifiableEntityRepository<Course> {
 
     @EntityGraph(attributePaths = {"disciplines"})
     @NonNull

@@ -9,19 +9,19 @@ import java.util.Set;
 
 @Entity
 @Table(name = "course")
-public class Course extends IdentifiableEntity {
+public class Course extends UUIDIdentifiableEntity {
 
     @Column(nullable = false)
-    private int number;
+    private Integer number;
 
     @OneToMany(mappedBy = "course")
     private Set<Discipline> disciplines;
 
-    public int getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(Integer number) {
         this.number = number;
     }
 
