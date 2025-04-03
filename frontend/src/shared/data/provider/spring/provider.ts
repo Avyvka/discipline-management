@@ -18,7 +18,20 @@ export const springDataProvider = (
         getList: async <TData extends BaseRecord = BaseRecord>(
             params: GetListParams
         ): Promise<GetListResponse<TData>> => {
-            const response = await delegate.getList<TData>(params);
+            const url = `${apiUrl}/${params.resource}`;
+            const { current = 1, pageSize = 10 } = params.pagination ?? {};
+            const { headers, method } = params.meta ?? {};
+
+            const response = await delegate.custom({
+                url: url,
+                method: method,
+                headers,
+                query: {
+                    page: current - 1,
+                    size: pageSize
+                }
+            });
+
             const springData = response.data as unknown as SpringDataResponse<TData>;
 
             return {

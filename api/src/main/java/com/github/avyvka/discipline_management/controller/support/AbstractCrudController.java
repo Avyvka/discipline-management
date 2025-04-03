@@ -2,8 +2,8 @@ package com.github.avyvka.discipline_management.controller.support;
 
 import com.github.avyvka.discipline_management.model.Identifiable;
 import com.github.avyvka.discipline_management.service.support.CrudService;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,8 +37,8 @@ public abstract class AbstractCrudController<D extends Identifiable<ID>, ID> imp
     }
 
     @Override
-    public ResponseEntity<Page<D>> getAll(Pageable pageable) {
-        return ResponseEntity.ok(service.findAll(pageable));
+    public ResponseEntity<PagedModel<D>> getAll(Pageable pageable) {
+        return ResponseEntity.ok(new PagedModel<>(service.findAll(pageable)));
     }
 
     @Override
