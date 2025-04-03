@@ -1,7 +1,7 @@
 package com.github.avyvka.discipline_management.controller;
 
 import com.github.avyvka.discipline_management.controller.support.AbstractCrudController;
-import com.github.avyvka.discipline_management.model.dto.IdentifiableEntityDto;
+import com.github.avyvka.discipline_management.model.Identifiable;
 import com.github.avyvka.discipline_management.service.support.AbstractCrudService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,12 +28,12 @@ import static org.mockito.Mockito.*;
 class AbstractCrudControllerTest {
 
     @Mock
-    AbstractCrudService<Object, Object, Object> crudService;
+    AbstractCrudService<Identifiable<Object>, Identifiable<Object>, Object> crudService;
 
     @Mock
     MockHttpServletRequest mockHttpServletRequest;
 
-    AbstractCrudController<IdentifiableEntityDto<Object>, Object> crudController;
+    AbstractCrudController<Identifiable<Object>, Object> crudController;
 
     @SuppressWarnings("unchecked")
     @BeforeEach
@@ -51,9 +51,9 @@ class AbstractCrudControllerTest {
     @Test
     void whenCreate_thenReturnsCreatedResponseWithLocation() {
         var id = UUID.randomUUID().toString();
-        var dto = mock(IdentifiableEntityDto.class);
+        var dto = mock(Identifiable.class);
 
-        when(dto.id()).thenReturn(id);
+        when(dto.getId()).thenReturn(id);
         when(crudService.create(dto)).thenReturn(dto);
 
         @SuppressWarnings("unchecked")
@@ -68,7 +68,7 @@ class AbstractCrudControllerTest {
     @Test
     void whenGetById_thenReturnsOkWithDto() {
         var id = mock(Object.class);
-        var dto = mock(IdentifiableEntityDto.class);
+        var dto = mock(Identifiable.class);
 
         when(crudService.findById(id)).thenReturn(Optional.of(dto));
 
@@ -92,12 +92,12 @@ class AbstractCrudControllerTest {
 
     @Test
     void whenGetAll_thenReturnsPageOfDto() {
-        var dto = mock(IdentifiableEntityDto.class);
+        var dto = mock(Identifiable.class);
         var pageable = mock(Pageable.class);
 
         when(crudService.findAll(pageable)).thenReturn(new PageImpl<>(List.of(dto)));
 
-        ResponseEntity<Page<IdentifiableEntityDto<Object>>> response = crudController.getAll(pageable);
+        ResponseEntity<Page<Identifiable<Object>>> response = crudController.getAll(pageable);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody())
@@ -109,7 +109,7 @@ class AbstractCrudControllerTest {
     @Test
     void whenUpdate_thenReturnsUpdatedDto() {
         var id = mock(Object.class);
-        var dto = mock(IdentifiableEntityDto.class);
+        var dto = mock(Identifiable.class);
 
         when(crudService.update(id, dto)).thenReturn(dto);
 
@@ -123,7 +123,7 @@ class AbstractCrudControllerTest {
     @Test
     void whenPartialUpdate_thenReturnsPatchedDto() {
         var id = mock(Object.class);
-        var dto = mock(IdentifiableEntityDto.class);
+        var dto = mock(Identifiable.class);
 
         when(crudService.partialUpdate(id, dto)).thenReturn(dto);
 

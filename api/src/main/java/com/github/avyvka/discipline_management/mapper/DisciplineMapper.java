@@ -25,6 +25,7 @@ public interface DisciplineMapper extends EntityDtoMapper<Discipline, Discipline
     DisciplineDto toDtoLazy(Discipline entity);
 
     @Override
+    @Mapping(target = "id", ignore = true)
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.SET_TO_NULL)
     Discipline update(@MappingTarget Discipline entity, DisciplineDto dto);
 

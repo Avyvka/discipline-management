@@ -22,6 +22,7 @@ public interface LecturerMapper extends EntityDtoMapper<Lecturer, LecturerDto> {
     LecturerDto toDtoLazy(Lecturer entity);
 
     @Override
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "disciplines", ignore = true)
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.SET_TO_NULL)
     Lecturer update(@MappingTarget Lecturer entity, LecturerDto dto);

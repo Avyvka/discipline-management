@@ -10,7 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
-public abstract class AbstractCrudService<E extends Identifiable<ID>, D, ID> implements CrudService<D, ID> {
+public abstract class AbstractCrudService<E extends Identifiable<ID>, D extends Identifiable<ID>, ID> implements CrudService<D, ID> {
 
     private final JpaRepository<E, ID> repository;
 
