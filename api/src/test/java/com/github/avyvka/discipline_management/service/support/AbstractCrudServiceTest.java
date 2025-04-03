@@ -93,7 +93,7 @@ class AbstractCrudServiceTest {
         var entity = mock(Object.class);
 
         when(repository.findAll(pageable)).thenReturn(new PageImpl<>(List.of(entity)));
-        when(mapper.toDto(entity)).thenReturn(dto);
+        when(mapper.toDtoLazy(entity)).thenReturn(dto);
 
         Page<Object> result = crudService.findAll(pageable);
 
