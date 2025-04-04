@@ -9,5 +9,22 @@ node {
 
 tasks.register("build", PnpmTask) {
     dependsOn "pnpmInstall"
+
+    inputs.dir(layout.projectDirectory.dir("src"))
+    inputs.dir(layout.projectDirectory.dir("public"))
+
+    inputs.files(
+            layout.projectDirectory.files(
+                    "index.html",
+                    "package.json",
+                    "pnpm-lock.yaml",
+                    "tsconfig.json",
+                    "tsconfig.node.json",
+                    "vite.config.ts"
+            )
+    )
+
+    outputs.dir(layout.buildDirectory.dir("dist"))
+
     pnpmCommand = ["run", "build"]
 }
