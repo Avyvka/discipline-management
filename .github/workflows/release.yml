@@ -32,12 +32,12 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle Wrapper
-        run: ./gradlew build -x test -Pversion=${{ github.event.release.tag_name }}
+        run: ./gradlew build -x test
 
       - name: Upload files to a GitHub release
         uses: svenstaro/upload-release-action@2.9.0
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          upload_url: ${{ github.event.release.upload_url }}
-          file: api/build/libs/api-${{ github.event.release.tag_name }}.jar
+          file: api/build/libs/api.jar
+          asset_name: discipline-management-${{ github.event.release.tag_name }}.jar
           tag: ${{ github.event.release.tag_name }}
