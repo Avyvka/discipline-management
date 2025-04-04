@@ -13,7 +13,7 @@ import { StudentCreate, StudentEdit, StudentList, StudentShow } from "./pages/st
 
 function App() {
     return (
-        <BrowserRouter basename="/ui">
+        <BrowserRouter>
             <ColorModeContextProvider>
                 <Refine
                     dataProvider={springDataProvider("http://localhost:8080/api/v1")}
