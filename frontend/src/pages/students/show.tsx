@@ -24,7 +24,7 @@ export const StudentShow = () => {
             <Title level={5}>Age</Title>
             <NumberField value={record?.age ?? ""} />
             <Title level={5}>Group</Title>
-            <NumberField value={record?.group ?? ""} />
+            <TextField value={record?.group ?? ""} />
             <Title level={5}>Course</Title>
             <NumberField value={record?.course?.number ?? ""} />
         </Show>
