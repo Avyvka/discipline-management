@@ -16,7 +16,7 @@ function App() {
         <BrowserRouter>
             <ColorModeContextProvider>
                 <Refine
-                    dataProvider={springDataProvider("http://localhost:8080/api/v1")}
+                    dataProvider={springDataProvider("/api/v1")}
                     routerProvider={routerProvider}
                     resources={resources}
                 >
