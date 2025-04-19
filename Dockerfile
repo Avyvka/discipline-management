@@ -15,10 +15,10 @@ USER spring-user
 
 WORKDIR /application
 
-COPY --from=layers /application/api/extracted/dependencies/ ./
-COPY --from=layers /application/api/extracted/spring-boot-loader/ ./
-COPY --from=layers /application/api/extracted/snapshot-dependencies/ ./
-COPY --from=layers /application/api/extracted/application/ ./
+COPY --from=layers /application/extracted/dependencies/ ./
+COPY --from=layers /application/extracted/spring-boot-loader/ ./
+COPY --from=layers /application/extracted/snapshot-dependencies/ ./
+COPY --from=layers /application/extracted/application/ ./
 
 RUN java -XX:ArchiveClassesAtExit=app.jsa -Dspring.context.exit=onRefresh -jar app.jar & exit 0
 
